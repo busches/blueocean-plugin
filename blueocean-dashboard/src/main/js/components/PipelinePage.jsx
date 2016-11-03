@@ -85,15 +85,15 @@ export class PipelinePage extends Component {
                           store={this.context.store}
                           pipeline={this.props.pipeline}
                         />
-                        <a href={buildClassicConfigUrl(pipeline)} target='_blank'><Icon size={24} icon="settings" style={{ fill: "#fff" }} /></a>
-                    </Title>                                        
-                    }                    
+                        <a href={buildClassicConfigUrl(window, pipeline)} target="_blank"><Icon size={24} icon="settings" style={{ fill: '#fff' }} /></a>
+                    </Title>
+                    }
                     
                     <PageTabs base={baseUrl}>
                         <TabLink to="/activity">Activity</TabLink>
                         <TabLink to="/branches">Branches</TabLink>
                         <TabLink to="/pr">Pull Requests</TabLink>
-                    </PageTabs>                    
+                    </PageTabs>
                 </PageHeader>
                 
                 {isReady && React.cloneElement(this.props.children, { pipeline, setTitle })}
@@ -125,5 +125,4 @@ const selectors = createSelector([pipelineSelector],
     (pipeline) => ({ pipeline }));
     
         
-
 export default connect(selectors, actions)(documentTitle(PipelinePage));
